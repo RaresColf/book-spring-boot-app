@@ -1,11 +1,12 @@
 package ro.sda.book_app.model;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+
 @Data
 @Entity
 @Table(name = "books")
