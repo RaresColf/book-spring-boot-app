@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

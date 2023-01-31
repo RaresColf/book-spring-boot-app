@@ -31,8 +31,10 @@ public class BookServiceImpl implements BookService {
     public List<Book> findAll() {
         List<Book> books = bookRepository.findAll();
       if(books.isEmpty()) {
+          log.info("No books were found!");
           throw new NotFoundException("No books were found");
       }
+      log.info("Books found in the database");
       return books;
     }
 
