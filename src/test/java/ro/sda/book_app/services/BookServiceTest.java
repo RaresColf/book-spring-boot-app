@@ -78,6 +78,8 @@ public class BookServiceTest {
 
         List<Book> result = bookService.findAll();
 
+        assertThat(result).containsAll(bookList);
+
         verify(bookRepository, times(1)).findAll();
         assertThat(logCaptor.getInfoLogs()).containsExactly("Books found in the database");
     }
