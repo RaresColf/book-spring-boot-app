@@ -83,4 +83,24 @@ public class BookServiceTest {
         verify(bookRepository, times(1)).findAll();
         assertThat(logCaptor.getInfoLogs()).containsExactly("Books found in the database");
     }
+
+    @Test
+    void testFindAllMethod_returnsListOfBooks() {
+
+        String expectedLogMessage = "Books found in the database";
+
+        List<Book> expected = List.of(
+                new Book(1, "a", "b", 2000),
+                new Book(2, "x", "y", 1990)
+        );
+
+        Mockito.lenient().when(bookRepository.findAll()).thenReturn(expected);
+
+        List<Book> result = bookService.findAll();
+
+        assertThat(result).containsAll(expected);
+        verify(bookRepository, times(1)).findAll();
+        assertThat(logCaptor.getInfoLogs()).containsExactly(expectedLogMessage);
+    }
+
 }

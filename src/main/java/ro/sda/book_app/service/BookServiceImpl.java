@@ -10,6 +10,8 @@ import ro.sda.book_app.service.interfaces.BookService;
 
 import java.nio.file.NotDirectoryException;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 @Slf4j
 public class BookServiceImpl implements BookService {
@@ -50,6 +52,13 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book findById(long id) {
-        return null;
+        log.info("Fetching book with id {}", id);
+        Optional<Book> optionalBook = bookRepository.findById(id);
+
+        if(optionalBook.isPresent()){
+            return  optionalBook.get();
+        } else {
+            throw new NotFoundException(String.format("Book with id (%s) could not be found", id));
+        }
     }
 }
