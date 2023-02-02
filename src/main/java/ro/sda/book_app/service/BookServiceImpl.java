@@ -61,4 +61,11 @@ public class BookServiceImpl implements BookService {
             throw new NotFoundException(String.format("Book with id (%s) could not be found", id));
         }
     }
+
+    public Book findByIdFunctional(long id) {
+        log.info("Fetching book with id {}", id);
+        return bookRepository.findById(id).orElseThrow(() ->new NotFoundException(String.format("Book with id (%s) could not be found")));
+
+    }
 }
+
